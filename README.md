@@ -1,34 +1,36 @@
 # Face Authentication (Face Verification) – Task 2
 
 ## 📌 Overview
+---
+# 🔐 Face Authentication System
 
-This project implements a **Face Authentication system** using Python and FastAPI.
-It verifies whether two input face images belong to the same person.
+This project builds a **Face Authentication system** using Python and FastAPI.
+Its purpose is to determine whether two given face images belong to the **same individual**.
 
-The system performs:
+The system carries out the following steps:
 
-* Face detection
-* Feature (embedding) extraction
-* Similarity computation
-* Final verification result
+* Detects faces in images
+* Extracts facial features (embeddings)
+* Measures similarity between faces
+* Provides a final verification result
 
 ---
 
-## 🚀 Features
+## 🚀 Key Features
 
-* Accepts two face images
-* Detects faces in both images
-* Extracts embeddings using InsightFace (ArcFace)
-* Computes similarity using cosine similarity
+* Accepts two input face images
+* Detects faces in both inputs
+* Generates embeddings using InsightFace (ArcFace model)
+* Calculates similarity using cosine similarity
 * Returns:
 
-  * Verification result: **same person / different person**
+  * Verification result (**same person / different person**)
   * Similarity score
   * Bounding boxes of detected faces
 
 ---
 
-## 🧠 Tech Stack
+## 🧠 Technology Stack
 
 * Python
 * FastAPI
@@ -44,9 +46,9 @@ The system performs:
 ```
 face-auth/
 │
-├── train.py          # Model setup (training file)
-├── test.py           # Load model + prediction function
-├── app.py            # FastAPI service
+├── train.py          # Model initialization/setup
+├── test.py           # Prediction & verification logic
+├── app.py            # FastAPI backend service
 ├── requirements.txt
 ├── README.md
 ```
@@ -55,37 +57,35 @@ face-auth/
 
 ## ⚙️ Installation
 
+Install dependencies using:
+
 ```bash
 pip install -r requirements.txt
-```
-
-Microsoft Visual C++ 14.0 or greater is required. Get it with "Microsoft C++ Build Tools": https://visualstudio.microsoft.com/visual-cpp-build-tools/
-
 ---
 
 ## ▶️ Running the Application
 
-### 1. Run FastAPI server
+### Step 1: Start FastAPI Server
 
 ```bash
 uvicorn app:app --reload
 ```
 
-### 2. Open API Docs
+### Step 2: Open API Documentation
 
 ```
 http://127.0.0.1:8000/docs
 ```
 
-### 3. Test the API
+### Step 3: Test the API
 
-* Use `/verify/` endpoint
+* Use the `/verify/` endpoint
 * Upload two face images
-* Get verification result
+* View the verification result
 
 ---
 
-## 📥 Example API Response
+## 📥 Sample API Response
 
 ```json
 {
@@ -98,70 +98,70 @@ http://127.0.0.1:8000/docs
 
 ---
 
-## 📌 How It Works
+## 📌 Working Process
 
 1. **Face Detection**
 
-   * Detect faces using InsightFace
+   * Identifies faces in both images using InsightFace
 
-2. **Embedding Extraction**
+2. **Feature Extraction**
 
-   * Convert faces into numerical vectors (embeddings)
+   * Converts detected faces into numerical embeddings
 
-3. **Similarity Calculation**
+3. **Similarity Measurement**
 
-   * Compute cosine similarity between embeddings
+   * Computes cosine similarity between embeddings
 
-4. **Decision**
+4. **Final Decision**
 
    * If similarity > 0.5 → same person
-   * Else → different person
+   * Otherwise → different person
 
 ---
 
-## 📁 Files Description
+## 📁 File Overview
 
 ### train.py
 
-* Initializes pretrained InsightFace model
-* Acts as training step (model setup)
+* Loads and initializes the pretrained InsightFace model
+* Serves as the model setup stage
 
 ### test.py
 
-* Contains:
+* Handles:
 
   * Model loading
   * Face embedding extraction
-  * Verification function
+  * Verification logic
 
 ### app.py
 
-* FastAPI service
-* Accepts image input
+* Implements FastAPI endpoints
+* Accepts image inputs
 * Returns prediction results
 
 ---
 
-## 📊 Model Used
+## 📊 Model Details
 
-* InsightFace (buffalo_l)
+* Model: InsightFace (buffalo_l)
 * Based on ArcFace embeddings
-* Pretrained model (no custom training required)
+* Pretrained (no additional training required)
 
 ---
 
-## 🧪 Notes
+## 🧪 Additional Notes
 
-* Only the first detected face is used
-* Threshold for similarity is set to **0.5** (can be tuned)
-* Works on CPU (GPU optional)
+* Only the first detected face is considered
+* Similarity threshold is set to **0.5** (adjustable)
+* Runs on CPU (GPU support optional)
 
 ---
 
 ## 🎯 Submission Checklist
 
-* [x] Training file (train.py)
-* [x] Testing file (test.py)
+* [x] train.py
+* [x] test.py
 * [x] FastAPI implementation
 * [x] requirements.txt
 * [x] README.md
@@ -169,25 +169,14 @@ http://127.0.0.1:8000/docs
 
 ---
 
-## 💡 Future Improvements
+## 💡 Future Enhancements
 
-* Multi-face support
-* Face alignment
-* Database integration (face login system)
+* Support for multiple faces
+* Improved face alignment
+* Integration with a database (face login system)
 * Liveness detection (anti-spoofing)
-* GPU optimization
-
+* GPU acceleration
 ---
-
-## 😄 Fun Note
-
-Face embedding is like:
-
-> “Aadhaar number for your face” 😎
-> If two match → same person!
-
----
-
 ## 👤 Author
 
-Puneet Kansal
+Batthini Anugna
